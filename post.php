@@ -20,7 +20,7 @@ function setDebugParams() {
   /* only runs if $_GET['debug'] is set. */
 
   global $params;
-  $params['to'] = 'jonathan@brightbit.com';
+  $params['to'] = 'maeick@missionfocus.com';
 }
 
 
@@ -66,7 +66,7 @@ $domain = preg_replace('{\.dev/}', '.com', $domain);
 $all_params = array (
   "missionfocus.com/contact" => array(
     'from' => $_POST['email'],
-    'to' => 'andrew.eick@missionfocus.com',
+    'to' => 'maeick@missionfocus.com',
     'subject' => 'Posted at missionfocus.com',
     'goto' => "http://$full_domain/contact/success",
     'dojsspamcheck' => true
@@ -81,13 +81,13 @@ $all_params = array (
   ),
   'spam' => array(
     'from' => "website@$domain",
-    'to' => "andrew.eick@missionfocus.com",
+    'to' => "maeick@missionfocus.com",
     'subject' => "apparently spam from $full_domain",
     'goto' => "http://$full_domain/"
   ),
   "default" => array(
     'from' => "website@$domain",
-    'to' => "andrew.eick@missionfocus.com",
+    'to' => "maeick@missionfocus.com",
     'subject' => "contact sent from ".$_SERVER['HTTP_REFERER'],
     'goto' => "http://$full_domain/contact/success/",
     'dojsspamcheck' => false
