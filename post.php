@@ -37,7 +37,11 @@ if ($debug_mode) {
   );
 }
 
-$script = preg_replace( //generic version of the url (strip meaningless subdomains)
+// generic version of the url, with the following stripped:
+// * meaningless subdomains
+// * trailing slash
+// * question mark & query string
+$script = preg_replace(
   '/^https?:\/\/(www\.|local\.|dev\.)?|\/$|\/?\?.+$/',
   '', $_SERVER['HTTP_REFERER']
 );
@@ -90,12 +94,13 @@ $all_params = array (
   )
 );
 
-if (array_key_exists($script, $all_params))
+if (array_key_exists($script, $all_params)) {
   $params = $all_params[$script];
-elseif (preg_match('/64.233.[0-9]+.[0-9]+|209.85.[0-9]+.[0-9]+/', $domain))
+} elseif (preg_match('/64.233.[0-9]+.[0-9]+|209.85.[0-9]+.[0-9]+/', $domain)) {
   $params = $all_params['google_translate'];
-else
+} else {
   $params = $all_params['default'];
+}
 
 if (
   strpos($params['from'], "\r") > 0 ||           // Check for extra mail headers snuck into from field
